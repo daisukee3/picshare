@@ -4,23 +4,16 @@
     = render "devise/shared/error_messages", resource: resource
     .field
       = f.label :Account, class: 'devise_label'
-      %br/
       = f.text_field :account, autofocus: true, autocomplete: "account", class: 'devise_form'
+      %hr/
     .field
       = f.label :email, class: 'devise_label'
-      %br/
       = f.email_field :email, autofocus: true, autocomplete: "email", class: 'devise_form'
+      %hr/
     .field
       = f.label :password, class: 'devise_label'
-      - if @minimum_password_length
-        %em.devise_label
-          (#{@minimum_password_length} characters minimum)
-      %br/
       = f.password_field :password, autocomplete: "new-password", class: 'devise_form'
-    .field
-      = f.label :password_confirmation, class: 'devise_label'
-      %br/
-      = f.password_field :password_confirmation, autocomplete: "new-password", class: 'devise_form'
+      %hr/
     .actions
       = f.submit "CREATE ACCOUNT", class: "btn-primary"
   = render "devise/shared/links"
