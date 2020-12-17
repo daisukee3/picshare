@@ -1,0 +1,56 @@
+.profilePage_user{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+.profilePage_user_name{  
+  text-align: center;
+}
+
+.profilePage_user_image{
+  margin-top: 35.56px;
+  text-align: center;
+}
+.profilePage_user_count{
+  margin-top: 43px;
+  text-align: center;
+}
+
+.profilePage_user_count p {
+  display: inline-block;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+.profilePage_user_display{
+  margin-top: 5px;
+  text-align: center;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #9E9E9E;
+}
+
+.profilePage_user_display p {
+  display: inline-block;
+  margin-left: 60px;
+  margin-right: 60px;  
+}
+
+.profilePage_user_posted_image{
+  display: flex;
+  flex-wrap:wrap;
+  text-align: center;
+  margin-top: 42px;
+}
+
+.posted_image{
+  width: 45%;
+  height: 192px;
+  text-align: center;
+  margin: 6px;
+}
