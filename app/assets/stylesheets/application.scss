@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'sign_in_up';
 @import 'buttons';
+@import 'profiles';
 
 html {
     word-spacing: 1px;
@@ -10,6 +11,10 @@ html {
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
     height: 100%;
+
+    a {
+      text-decoration: none;
+    }
   }
   
   *,
