@@ -1,0 +1,84 @@
+.camera_icon{
+  margin-top: 8px;
+  margin-bottom: 46px;
+}
+
+.card_user_avatar{
+  img{
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.card_top{
+  display:flex;
+  flex-wrap:nowrap;
+}
+
+.card_top_element{
+  margin-left: 8px;
+}
+
+.card_user_name{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.card_user_post_time{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  color: #9E9E9E;
+  }
+
+  .card_content{
+    margin-top: 11px;
+  }
+
+  .card_image{
+    display: flex;
+    flex-wrap:wrap;
+  }
+  .card_image_individual{
+    margin-right: 7px;
+  }
+
+  // １枚目を親要素として画像の２、３枚目がheight50%ずつに
+
+  .card_option{
+    display: flex;
+    flex-wrap:wrap;
+  }
+
+  .card_option_individual{
+    margin-top: 12px;
+    margin-right: 14px;
+  }
+
+  .card_detail{
+    display: flex;
+    flex-wrap:wrap;
+  }
+
+  .card_context_user_name{
+    margin-right: 10px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .card_context{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+  }
