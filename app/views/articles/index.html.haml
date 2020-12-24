@@ -1,6 +1,6 @@
 .container
   .camera_icon
-    = image_tag 'photo-camera (1).png'
+    %i.fas.fa-camera
   - @articles.each do |article|
     .card
       .card_top
@@ -18,14 +18,17 @@
           = image_tag 'Rectangle (9).png', :class => "card_image_individual"
         .card_option
           .card_heart
-            = image_tag 'Vector (1).png', :class => "card_option_individual"
+            %i.far.fa-heart
           .card_do_comment
-            = image_tag 'Vector (2).png', :class => "card_option_individual"
+            %i.far.fa-comment-dots
           .card_share
-            = image_tag 'Vector (3).png', :class => "card_option_individual"
+            %i.fa.fa-share-alt{"aria-hidden" => "true"}
         .card_detail
           .card_context_user_name
             = current_user.account
           .card_context
             = article.content
+  = link_to new_article_path do
+    .float_btn
+      %i.fa.fa-plus
 
