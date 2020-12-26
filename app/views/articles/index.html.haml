@@ -11,6 +11,11 @@
             = current_user.account
           .card_user_post_time
             3 hours ago
+        .article_detail_actions
+          .dropdown
+            = image_tag 'actions.svg', class: 'dropbtn'
+            .dropdown-content.mini
+              %a{:href => "#"} 編集する
       .card_content
         .card_image
           = image_tag 'Rectangle (7).png', :class => "card_image_individual"

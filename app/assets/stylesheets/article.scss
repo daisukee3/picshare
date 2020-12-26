@@ -1,0 +1,25 @@
+.article {
+  position: relative;
+  &_title {
+    font-size: 22px;
+  }
+
+  &_detail {
+    padding-top: 10px;
+    cursor: pointer;
+    display: flex;
+    font-size: 12px;
+    position: relative;
+
+    img {
+      cursor: pointer;
+      border-radius: 100%;
+      margin-right: 16px;
+    }
+
+    &_actions {
+      right: 30px;
+      position: absolute;
+    }
+  }
+}
