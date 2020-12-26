@@ -1,0 +1,67 @@
+.new_top_content{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+}
+
+.cancel_btn{
+  width: 33.33333333%;
+  text-align: left;
+}
+
+.new_header{
+  text-align: center;
+  width: 33.33333333%;
+}
+
+.post_btn{
+  width: 33.33333333%;
+  text-align: right;
+}
+
+.post_user_introduction{
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 40px;
+
+  img{
+  width: 40px;
+  height: 40px;
+  }
+}
+
+.post_user_name{
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 18px;
+
+}
+
+textarea {
+  width: 100%;
+  margin-top: 30px;
+  height: 35px;
+  resize: vertical;
+  border-right:none;
+  border-left:none;
+  border-top:none;
+
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+::placeholder{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #BDBDBD;
+  mix-blend-mode: normal;
+  opacity: 0.9;
+  }
