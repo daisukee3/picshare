@@ -11,7 +11,7 @@
             .card_user_name
               = current_user.account
             .card_user_post_time
-              3 hours ago
+              %p= article.display_created_at
           .article_detail_actions
             .dropdown
               = image_tag 'actions.svg', class: 'dropbtn'
