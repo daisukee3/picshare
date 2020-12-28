@@ -2,39 +2,7 @@
   .camera_icon
     %i.fas.fa-camera
   - @articles.each do |article|
-    .card
-      - if user_signed_in? && current_user.has_written?(article)
-        .card_top
-          .card_user_avatar
-            = image_tag current_user.avatar_image
-          .card_top_element
-            .card_user_name
-              = current_user.account
-            .card_user_post_time
-              %p= article.display_created_at
-          .article_detail_actions
-            .dropdown
-              = image_tag 'actions.svg', class: 'dropbtn'
-              .dropdown-content.mini
-                = link_to '編集する', edit_article_path(article)
-                = link_to '削除する', article_path(article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか？' }
-        .card_content
-          .card_image
-            = image_tag 'Rectangle (7).png', :class => "card_image_individual"
-            = image_tag 'Rectangle (8).png', :class => "card_image_individual"
-            = image_tag 'Rectangle (9).png', :class => "card_image_individual"
-          .card_option
-            .card_heart
-              %i.far.fa-heart
-            .card_do_comment
-              %i.far.fa-comment-dots
-            .card_share
-              %i.fa.fa-share-alt{"aria-hidden" => "true"}
-          .card_detail
-            .card_context_user_name
-              = current_user.account
-            .card_context
-              = article.content
+    = render 'article', article: article
   = link_to new_article_path do
     .float_btn
       %i.fa.fa-plus
