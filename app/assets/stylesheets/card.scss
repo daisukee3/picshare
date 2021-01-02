@@ -1,12 +1,31 @@
+.top_element{
+  display: flex;
+  flex-wrap:wrap;
+}
+
 .camera_icon{
   margin-top: 8px;
   margin-bottom: 46px;
 }
 
+.index_detail_actions{
+  padding-top: 10px;
+  cursor: pointer;
+  display: flex;
+  font-size: 12px;
+  right: 25px;
+  position: absolute;
+
+    img {
+      cursor: pointer;
+      border-radius: 100%;
+    }
+}
+
 .card_user_avatar{
   img{
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
 }
 
