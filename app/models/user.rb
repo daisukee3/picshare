@@ -30,7 +30,6 @@ class User < ApplicationRecord
     articles.exists?(id: article.id)
   end
 
-
   def prepare_profile
     profile || build_profile
   end

@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:edit, :update]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
@@ -7,13 +6,13 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    @article = current_user.articles.build
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
     if @article.save
-      redirect to articles_path(@article), notice: '保存完了'
+      redirect_to articles_path(@article), notice: '保存完了'
     else
       flash.now[:error] = '保存失敗'
       render :new
@@ -21,11 +20,13 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @article = current_user.articles.find(params[:id])
   end
 
   def update
+    @article = current_user.articles.find(params[:id])
     if @article.update(article_params)
-      redirect to articles_path(@article), notice: '更新完了'
+      redirect_to articles_path(@article), notice: '更新完了'
     else
       flash.now[:error] = '更新失敗'
       render :edit
@@ -33,7 +34,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    article = Article.find(params:[:id])
+    article = current_user.articles.find(params[:id])
     article.destroy!
     redirect_to root_path, notice: '削除成功'
   end
@@ -43,7 +44,4 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :content)
   end
 
-  def set_article
-      @article = Article.find(params[:id])
-  end
 end
