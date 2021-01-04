@@ -7,13 +7,13 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    @article = current_user.articles.build
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
     if @article.save
-      redirect to articles_path(@article), notice: '保存完了'
+      redirect_to articles_path(@article), notice: '保存完了'
     else
       flash.now[:error] = '保存失敗'
       render :new
@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect to articles_path(@article), notice: '更新完了'
+      redirect_to articles_path(@article), notice: '更新完了'
     else
       flash.now[:error] = '更新失敗'
       render :edit
