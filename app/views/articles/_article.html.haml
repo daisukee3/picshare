@@ -1,10 +1,10 @@
 .card
   .card_top
     .card_user_avatar
-      = image_tag current_user.avatar_image
+      = image_tag article.user.avatar_image
     .card_top_element
       .card_user_name
-        = current_user.account
+        = article.user.account
       .card_user_post_time
         %p= article.display_created_at
     - if user_signed_in? && current_user.has_written?(article)
@@ -28,6 +28,6 @@
         %i.fa.fa-share-alt{"aria-hidden" => "true"}
     .card_detail
       .card_context_user_name
-        = current_user.account
+        = article.user.account
       .card_context
         = article.content
