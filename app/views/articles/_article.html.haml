@@ -8,12 +8,13 @@
           = current_user.account
         .card_user_post_time
           %p= article.display_created_at
-      .article_detail_actions
-        .dropdown
-          = image_tag 'actions.svg', class: 'dropbtn'
-          .dropdown-content.mini
-            = link_to '編集する', edit_article_path(article)
-            = link_to '削除する', article_path(article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか？' }
+      - if user_signed_in? && current_user.has_written?(article)
+        .article_detail_actions
+          .dropdown
+            = image_tag 'actions.svg', class: 'dropbtn'
+            .dropdown-content.mini
+              = link_to '編集する', edit_article_path(article)
+              = link_to '削除する', article_path(article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか？' }
     .card_content
       .card_image
         = image_tag 'Rectangle (7).png', :class => "card_image_individual"
