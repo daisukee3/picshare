@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:edit, :update]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
@@ -21,9 +20,11 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @article = current_user.articles.find(params[:id])
   end
 
   def update
+    @article = current_user.articles.find(params[:id])
     if @article.update(article_params)
       redirect_to articles_path(@article), notice: '更新完了'
     else
@@ -43,7 +44,4 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :content)
   end
 
-  def set_article
-      @article = Article.find(params[:id])
-  end
 end
