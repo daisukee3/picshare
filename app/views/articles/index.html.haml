@@ -1,7 +1,8 @@
 .container
   .top_element
-    .camera_icon
-      %i.fas.fa-camera
+    = link_to new_article_path do
+      .camera_icon
+        %i.fas.fa-camera
     - if user_signed_in?
       .index_detail_actions
         .dropdown
@@ -13,7 +14,3 @@
       = link_to 'ログイン', new_user_session_path, class: 'index_loginBtn'
   - @articles.each do |article|
     = render 'article', article: article
-  = link_to new_article_path do
-    .float_btn
-      %i.fa.fa-plus
-
