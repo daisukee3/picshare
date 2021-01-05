@@ -22,8 +22,9 @@
     .card_option
       .card_heart
         %i.far.fa-heart
-      .card_do_comment
-        %i.far.fa-comment-dots
+      = link_to new_article_comment_path(article) do
+        .card_do_comment
+          %i.far.fa-comment-dots
       .card_share
         %i.fa.fa-share-alt{"aria-hidden" => "true"}
     .card_detail
@@ -31,3 +32,4 @@
         = article.user.account
       .card_context
         = article.content
+  = link_to 'コメントを表示', article_comment_path(article_id: article.id, id: article.comments)

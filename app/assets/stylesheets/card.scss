@@ -4,7 +4,7 @@
 }
 
 .camera_icon{
-  margin-top: 8px;
+  margin-top: 15px;
   margin-bottom: 46px;
 }
 
@@ -72,11 +72,10 @@
   .card_option{
     display: flex;
     flex-wrap:wrap;
-  }
-
-  .card_option_individual{
-    margin-top: 12px;
-    margin-right: 14px;
+    i {
+      margin-top: 12px;
+      margin-right: 14px;
+    }
   }
 
   .card_detail{
