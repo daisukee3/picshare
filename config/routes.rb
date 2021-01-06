@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   
   resource :profile, only: [:show, :edit, :update]
   resources :favorites, only: [:index]
-  resources :accounts, only: [:show]
+
+  resources :accounts, only: [:show] do
+    resources :follows, only: [:create]
+  end
 
   resources :articles do
     resources :comments, only: [:show, :new, :create]
