@@ -1,10 +1,12 @@
 .card
   .card_top
     .card_user_avatar
-      = image_tag article.user.avatar_image
+      = link_to account_path(article.user) do
+        = image_tag article.user.avatar_image
     .card_top_element
       .card_user_name
-        = article.user.account
+        = link_to account_path(article.user) do
+          = article.user.account
       .card_user_post_time
         %p= article.display_created_at
     - if user_signed_in? && current_user.has_written?(article)
