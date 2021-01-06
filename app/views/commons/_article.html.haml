@@ -16,9 +16,9 @@
             = link_to '削除する', article_path(article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか？' }
   .card_content
     .card_image
-      = image_tag 'Rectangle (7).png', :class => "card_image_individual"
-      = image_tag 'Rectangle (8).png', :class => "card_image_individual"
-      = image_tag 'Rectangle (9).png', :class => "card_image_individual"
+      - if article.images.attached?
+        - article.images.each do |image|
+          = image_tag image
     .card_option
       .card_heart
         %i.far.fa-heart

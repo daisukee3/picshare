@@ -17,4 +17,9 @@
         = current_user.account
     %div 
       = f.text_area :content, placeholder: "What's on your mind ?"
+    %div
+      = f.label :images, '画像'
+    %div
+      = f.file_field :images, multiple: true
+
 
