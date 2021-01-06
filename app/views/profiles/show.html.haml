@@ -24,3 +24,5 @@
       = image_tag 'Rectangle (5)', :class => "posted_image"
     .profilePage_user_actionButton
     = link_to 'Edit', edit_profile_path
+  - current_user.articles.each do |article|
+    = render 'commons/article', article: article

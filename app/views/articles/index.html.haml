@@ -8,9 +8,9 @@
         .dropdown
           = image_tag current_user.avatar_image, class: 'index_avatar_dropbtn'
           .dropdown-content.mini
-            %a{:href => "#"} プロフィール
+            = link_to 'プロフィール', profile_path
             = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
     - else
       = link_to 'ログイン', new_user_session_path, class: 'index_loginBtn'
   - @articles.each do |article|
-    = render 'article', article: article
+    = render 'commons/article', article: article

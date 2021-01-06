@@ -1,3 +1,7 @@
+.card{
+  margin-top: 30px;
+}
+
 .top_element{
   display: flex;
   flex-wrap:wrap;
@@ -62,11 +66,12 @@
   .card_image{
     display: flex;
     flex-wrap:wrap;
+    img {
+      width: 150px;
+      height: 150px;
+      margin-right: 10px;
+    }
   }
-  .card_image_individual{
-    margin-right: 7px;
-  }
-
   // １枚目を親要素として画像の２、３枚目がheight50%ずつに
 
   .card_option{
