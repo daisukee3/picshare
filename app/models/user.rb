@@ -63,14 +63,6 @@ class User < ApplicationRecord
     profile || build_profile
   end
 
-  def avatar_image
-    if profile&.avatar&.attached?
-      profile.avatar
-    else
-      'Ellipse.png'
-    end
-  end
-
   private
   def get_user_id(user)
     if user.is_a?(User)
