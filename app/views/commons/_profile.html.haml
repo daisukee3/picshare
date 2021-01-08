@@ -1,0 +1,34 @@
+.container.profilePage
+  .profilePage_user
+    - if !current_page?(root_path)
+      = link_to :back do
+        .back ⬅︎
+    .profilePage_user_name
+      = user.account
+    .profilePage_user_actionButton
+      - if user == current_user
+        = link_to 'Edit', edit_profile_path
+      - else
+        - if current_user&.has_followed?(user)
+          = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'}
+        - else
+          = link_to 'Follow', account_follows_path(user), data: {method: 'post'}
+    .profilePage_user_image
+      = image_tag user.avatar_image
+    .profilePage_user_count
+      %p 44
+      %p 110
+      %p 44
+  .profilePage_user_display 
+    %p Posts
+    %p Followers
+    %p Following
+    .profilePage_user_posted_image
+      = image_tag 'Rectangle (6)', :class => "posted_image"
+      = image_tag 'Rectangle (1)', :class => "posted_image"
+      = image_tag 'Rectangle (2)', :class => "posted_image"
+      = image_tag 'Rectangle (3)', :class => "posted_image"
+      = image_tag 'Rectangle (4)', :class => "posted_image"
+      = image_tag 'Rectangle (5)', :class => "posted_image"
+  - user.articles.each do |article|
+    = render 'commons/article', article: article
