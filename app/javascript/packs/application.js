@@ -25,6 +25,9 @@ const handleHeartDisplay = (hasLiked) => {
 
 import $ from 'jquery'
 import axios from 'axios'
+import { csrfToken } from 'rails-ujs'
+
+axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 document.addEventListener('DOMContentLoaded', () => {
   const dataset = $('#card-show').data()
@@ -33,5 +36,27 @@ document.addEventListener('DOMContentLoaded', () => {
     .then((response) =>  {
       const hasLiked = response.data.hasLiked
       handleHeartDisplay(hasLiked)
+    })
+
+    $('.inactive-heart').on('click', () => {
+      axios.post(`/articles/${articleId}/like`)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((e) => {
+        window.alert('Error')
+        console.log(e)
+      })
+    })
+
+    $('.active-heart').on('click', () => {
+      axios.delete(`/articles/${articleId}/like`)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((e) => {
+        window.alert('Error')
+        console.log(e)
+      })
     })
 })

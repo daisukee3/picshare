@@ -24,11 +24,9 @@
     .card_option
       - if user_signed_in?
         .card_heart.hidden.active-heart
-          = link_to article_like_path(article), data:{ method: 'delete'} do
-            %i.fas.fa-heart{:style => "color:red;></i>"}
+          %i.fas.fa-heart{:style => "color:red;></i>"}
         .card_heart.hidden.inactive-heart
-          = link_to article_like_path(article), data: { method: 'post' } do
-            %i.far.fa-heart
+          %i.far.fa-heart
       = link_to new_article_comment_path(article) do
         .card_do_comment
           %i.far.fa-comment-dots
