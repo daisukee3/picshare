@@ -17,8 +17,8 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import $ from 'jquery'
+import axios from 'axios'
+import { csrfToken } from 'rails-ujs'
 
-document.addEventListener('DOMContentLoaded', () => {
-  $('.profilePage_user_image').on('click', () => {
-  })
-})
+
+
