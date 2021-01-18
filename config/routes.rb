@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :articles do
-    resources :comments, only: [:show, :new, :create]
+    resources :comments, only: [:index, :show, :new, :create]
 
     resource :like, only: [:show, :create, :destroy]
   end
