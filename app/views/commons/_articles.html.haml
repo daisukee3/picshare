@@ -15,4 +15,5 @@
       = link_to 'ログイン', new_user_session_path, class: 'index_loginBtn'
   - articles.each do |article|
     = render 'commons/article', article: article
+
 = javascript_pack_tag 'article'
