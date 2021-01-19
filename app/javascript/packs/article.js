@@ -4,10 +4,29 @@ import { csrfToken } from 'rails-ujs'
 
 axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
-//いいね機能
-
 document.addEventListener('DOMContentLoaded', () => {
+  
+  // コメント機能
 
+  $('.show-comment-form').on('click', () => {
+    $('.show-comment-form').addClass('hidden')
+    $('.comment-text-area').removeClass('hidden')
+  })
+
+  const dataset = $('#article-show').data()
+  const articleId = dataset.articleId
+
+  axios.get(`/articles/${articleId}/comments`)
+  .then((response) => {
+    const comments = response.data
+    comments.forEach((comment) => {
+      $('.comments-container').append(
+        `<div class="article_comment"><p>${comment.content}</p></div>`
+      )
+    })
+  }) 
+
+  //いいね機能
   $(function(){
     $(`.inactive-heart`).on('click', function() {
       const articleId = $(this).attr('id')
@@ -41,26 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
   })
+
 })
 
-
-  // コメント機能
-document.addEventListener('DOMContentLoaded', () => {
-  const dataset = $('#article-show').data()
-  const articleId = dataset.articleId
-
-  axios.get(`/articles/${articleId}/comments`)
-  .then((response) => {
-    const comments = response.data
-    comments.forEach((comment) => {
-      $('.comments-container').append(
-        `<div class="article_comment"><p>${comment.content}</p></div>`
-      )
-    })
-  }) 
-})
-
-// const handleHeartDisplay = (hasLiked) => {
+// const hand$('leHeartDisplay = (hasLiked) => {
 //   if (hasLiked) {
 //     $('.active-heart').removeClass('hidden')
 //   } else {

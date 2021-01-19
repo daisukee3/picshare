@@ -1,6 +1,17 @@
-.article
-  %h2 コメント一覧
-  - @comments.each do |comment|
-    .article_comment
-      %p= comment.content
+.container
+  .article
+    %h2 コメント一覧
+    - @comments.each do |comment|
+      .article_comment
+        %p= comment.content
     .comments-container
+
+  .container
+    .btn-third.show-comment-form
+      コメントを追加
+    .comment-text-area.hidden
+      = text_area_tag :comment_content, '', class: 'sm'
+      .btn-third
+        コメントを追加
+  
+= javascript_pack_tag 'article'
