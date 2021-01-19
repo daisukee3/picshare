@@ -1,3 +1,6 @@
 .article
   %h2 コメント一覧
-  .comments-container
+  - @comments.each do |comment|
+    .article_comment
+      %p= comment.content
+    .comments-container
