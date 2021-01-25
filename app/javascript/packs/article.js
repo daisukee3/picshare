@@ -5,28 +5,9 @@ import { csrfToken } from 'rails-ujs'
 axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 document.addEventListener('DOMContentLoaded', () => {
-  
-  // コメント機能
-
-  $('.show-comment-form').on('click', () => {
-    $('.show-comment-form').addClass('hidden')
-    $('.comment-text-area').removeClass('hidden')
-  })
-
-  const dataset = $('#article-show').data()
-  const articleId = dataset.articleId
-
-  axios.get(`/articles/${articleId}/comments`)
-  .then((response) => {
-    const comments = response.data
-    comments.forEach((comment) => {
-      $('.comments-container').append(
-        `<div class="article_comment"><p>${comment.content}</p></div>`
-      )
-    })
-  }) 
 
   //いいね機能
+
   $(function(){
     $(`.inactive-heart`).on('click', function() {
       const articleId = $(this).attr('id')
