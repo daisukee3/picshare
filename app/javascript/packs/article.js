@@ -4,9 +4,9 @@ import { csrfToken } from 'rails-ujs'
 
 axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
-//いいね機能
-
 document.addEventListener('DOMContentLoaded', () => {
+
+  //いいね機能
 
   $(function(){
     $(`.inactive-heart`).on('click', function() {
@@ -41,8 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
   })
+
 })
-// const handleHeartDisplay = (hasLiked) => {
+
+// const hand$('leHeartDisplay = (hasLiked) => {
 //   if (hasLiked) {
 //     $('.active-heart').removeClass('hidden')
 //   } else {
