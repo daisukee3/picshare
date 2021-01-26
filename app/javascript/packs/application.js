@@ -34,15 +34,25 @@ const appendNewComment = (comment) => {
   )
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  
-  handleCommentForm()
+// コメント機能
+document.addEventListener('DOMContentLoaded', () => { 
 
-  // コメント機能
+  handleCommentForm()
 
   const dataset = $('#article-show').data()
   const articleId = dataset.articleId
 
+  // コメント内容表示
+  axios.get(`/articles/${articleId}/comments`)
+  .then((response) => {
+    const comments = response.data
+    comments.forEach((comment) => {
+      appendNewComment(comment)
+    })
+  }) 
+
+
+  // コメント追加処理
   $('.add-comment-button').on('click', () => {
     const content = $('#comment_content').val()
     if (!content) {
@@ -59,12 +69,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
   
-  axios.get(`/articles/${articleId}/comments`)
-  .then((response) => {
-    const comments = response.data
-    comments.forEach((comment) => {
-      appendNewComment(comment)
-    })
-  }) 
 
 })

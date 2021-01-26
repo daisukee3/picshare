@@ -1,4 +1,7 @@
 .container
+  .header_logos
+    %p.header_pageTitle
+      = link_to 'Picshare', root_path
   .article
     %h2 コメント一覧
     - @comments.each do |comment|
@@ -14,4 +17,3 @@
       .btn-third.add-comment-button
         コメントを追加
   
-= javascript_pack_tag 'article'

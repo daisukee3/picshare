@@ -1,2 +1,65 @@
-.container#article-show{data: {article_id: @article.id}}
-  .comments-container{id: "#{@article.id}"}
+.container
+  .header_logos
+    %p.header_pageTitle
+      = link_to 'Picshare', root_path
+  .card#article-show{data: {article_id: @article.id}}
+    .card_top
+      .card_user_avatar
+        = link_to account_path(@article.user) do
+          = image_tag @article.user.avatar_image
+      .card_top_element
+        .card_user_name
+          = link_to account_path(@article.user) do
+            = @article.user.account
+        .card_user_post_time
+          %p= @article.display_created_at
+      - if user_signed_in? && current_user.has_written?(@article)
+        .article_detail_actions
+          .dropdown
+            = image_tag 'actions.svg', class: 'dropbtn'
+            .dropdown-content.mini
+              = link_to '編集する', edit_article_path(@article)
+              = link_to '削除する', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか？' }
+    .card_content
+      .card_image
+        - if @article.images.attached?
+          - @article.images.each do |image|
+            = image_tag image
+    - if user_signed_in? 
+      .card_option
+        - if current_user.has_liked?(@article)
+          .card_heart.active-heart{:id => "#{@article.id}"}
+            %i.fas.fa-heart{:style => "color:red;></i>"}
+          .card_heart.hidden.inactive-heart{:id => "#{@article.id}"}
+            %i.far.fa-heart
+        - else
+          .card_heart.inactive-heart{:id => "#{@article.id}"}
+            %i.far.fa-heart
+          .card_heart.hidden.active-heart{:id => "#{@article.id}"}
+            %i.fas.fa-heart{:style => "color:red;></i>"}
+        = link_to new_article_comment_path(@article) do
+          .card_do_comment
+            %i.far.fa-comment-dots
+        .card_share
+          %i.fa.fa-share-alt{"aria-hidden" => "true"}
+      .card_detail
+        .card_context_user_name
+          = @article.user.account
+        .card_context
+          = @article.content
+    = link_to 'コメントを表示', article_comment_path(article_id: @article.id, id: @article.comments)
+  .article
+    %h2 Comment
+    -# %h2=I18n.t('articles.comment_list')
+    .comments-container
+
+  .container
+    .btn-third.show-comment-form
+      コメントを追加
+    .comment-text-area.hidden
+      = text_area_tag :comment_content, '', class: 'sm'
+      .btn-third.add-comment-button
+        コメントを追加
+
+= javascript_pack_tag 'article'
+
