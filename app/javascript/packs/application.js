@@ -16,10 +16,7 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import $ from 'jquery'
-import axios from 'axios'
-import { csrfToken } from 'rails-ujs'
-
-axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
+import axios from 'modules/axios'
 
 const handleCommentForm = () => {
   $('.show-comment-form').on('click', () => {
@@ -52,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }) 
 
 
-  // コメント追加処理
+  // コメント投稿処理
   $('.add-comment-button').on('click', () => {
     const content = $('#comment_content').val()
     if (!content) {
