@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   $(function(){
     $(`.inactive-heart`).on('click', function() {
       const articleId = $(this).attr('id')
-      axios.post(`/articles/${articleId}/like`)
+      axios.post(`/api/articles/${articleId}/like`)
         .then((response) => {
           if (response.data.status === 'ok') {
             $(this).addClass('hidden')
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   $(function(){
     $(`.active-heart`).on('click', function() {
       const articleId = $(this).attr('id')
-      axios.delete(`/articles/${articleId}/like`)
+      axios.delete(`/api/articles/${articleId}/like`)
         .then((response) => {
           if (response.data.status === 'ok') {
             $(`#${articleId}.inactive-heart`).removeClass('hidden')
