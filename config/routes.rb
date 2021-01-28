@@ -17,9 +17,12 @@ Rails.application.routes.draw do
     resources :unfollows, only: [:create]
   end
 
-  resources :articles do
-    resources :comments, only: [:index, :show, :new, :create]
+  resources :articles
 
-    resource :like, only: [:show, :create, :destroy]
+  namespace :api, defaults: {format: :json} do
+    scope '/articles/:article_id' do
+      resources :comments, only: [:index, :show, :create]
+      resource :like, only: [:show, :create, :destroy]
+    end
   end
 end
