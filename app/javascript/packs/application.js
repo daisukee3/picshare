@@ -68,3 +68,40 @@ document.addEventListener('DOMContentLoaded', () => {
   
 
 })
+
+// プロフィールのアバター画像変更
+
+document.addEventListener('DOMContentLoaded', () => {
+  const reader = new FileReader();
+  const imageUpload = document.getElementById("post_img");
+
+imageUpload.onchange = function() {
+  var file = $('input[type="file"]').prop('files')[0];
+
+  if(!file) {
+    window.alert('画像を選択してください')
+  } else {
+    reader.readAsDataURL(file);
+    reader.onload = function (e) {
+
+      $('#avatar_img_prev').attr('src', e.target.result);
+      axios.put(`/profile/edit`)
+      
+        .then((res) => {
+          window.alert('成功！')
+
+          $('#avatar_img_prev').removeClass('hidden');
+          $('.avatar_present_img').remove();
+        })
+
+        .catch((e) => {
+          
+        })
+    }
+  }
+}
+
+$('.avatar_present_img').on('click', () => {
+  $('#post_img').click()
+})
+});
