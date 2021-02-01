@@ -7,18 +7,27 @@
       = user.account
     .profilePage_user_actionButton
       - if user == current_user
-        = link_to 'Edit', edit_profile_path
+        -# = link_to 'Edit', edit_profile_path
       - else
         - if current_user&.has_followed?(user)
           = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'}
         - else
           = link_to 'Follow', account_follows_path(user), data: {method: 'post'}
-    .profilePage_user_image
-      = image_tag user.avatar_image
-    .profilePage_user_count
-      %p 44
-      %p 110
-      %p 44
+= form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
+  .circle-avatar
+    %img#avatar_img_prev.hidden{:src => "#"}
+      - if current_user.persisted? && current_user.avatar_image
+        = image_tag user.avatar_image, class: 'avatar_present_img'
+      - else
+        = image_tag 'Ellipse.png', class: 'avatar_present_img'
+        = f.hidden_field :avatar_cache
+      = f.file_field :avatar, id: 'post_img'
+      = f.submit '保存',id: 'post_btn'
+
+  .profilePage_user_count
+    %p 44
+    %p 110
+    %p 44
   .profilePage_user_display 
     %p Posts
     %p Followers
