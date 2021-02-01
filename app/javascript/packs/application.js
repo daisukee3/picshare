@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const reader = new FileReader();
   const imageUpload = document.getElementById("post_img");
 
-imageUpload.onchange = function() {
+  imageUpload.onchange = function() {
   var file = $('input[type="file"]').prop('files')[0];
 
   if(!file) {
