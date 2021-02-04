@@ -40,8 +40,9 @@
         = link_to new_article_comment_path(@article) do
           .card_do_comment
             %i.far.fa-comment-dots
-        .card_share
-          %i.fa.fa-share-alt{"aria-hidden" => "true"}
+        = link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do
+          .card_share
+            %i.fa.fa-share-alt{"aria-hidden" => "true"}
       .card_detail
         .card_context_user_name
           = @article.user.account
