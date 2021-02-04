@@ -27,7 +27,13 @@ const handleCommentForm = () => {
 
 const appendNewComment = (comment) => {
   $('.comments-container').append(
-    `<div class="article_comment"><p>${comment.content}</p></div>`
+    `<div class="article_comment">
+    <div class="article_comment_image">
+      <img class='article_comment_image' src='${comment.user.avatar_comment_image}'>
+    </div>
+    <p>${comment.content}</p>
+    <p>@${comment.user.account}</p>
+    </div>`
   )
 }
 
@@ -38,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const dataset = $('#article-show').data()
   const articleId = dataset.articleId
-
   // コメント内容表示
   axios.get(`/articles/${articleId}/comments`)
   .then((response) => {
@@ -47,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
       appendNewComment(comment)
     })
   }) 
-
 
   // コメント投稿処理
   $('.add-comment-button').on('click', () => {
