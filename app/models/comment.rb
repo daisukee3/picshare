@@ -19,4 +19,11 @@ class Comment < ApplicationRecord
   belongs_to :user
   
   validates :content, presence: true
+
+  after_create :send_email
+
+  private
+  def send_email
+    CommentReplyMailer.send_reply(user, article).deliver_later
+  end
 end
