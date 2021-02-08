@@ -109,3 +109,58 @@ $('.avatar_present_img').on('click', () => {
   $('#post_img').click()
 })
 });
+
+// フォロー機能
+
+const handleFollowDisplay = (hasFollow) => {
+  if (hasFollow) {
+      $('.following').removeClass('hidden')
+  } else {
+      $('.follow').removeClass('hidden')
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const dataset = $('#account-show').data()
+  const accountId = dataset.accountId
+  const userId = dataset.userId
+
+  axios.get(`/accounts/${accountId}/follows/${userId}`)
+    .then((response) => {
+        const hasFollow = response.data.hasFollow
+        handleFollowDisplay(hasFollow)
+    })
+
+  $(function(){
+    $('.follow').on('click', function() {
+      axios.post(`/accounts/${accountId}/follows`)
+        .then((response) => {
+          if (response.data.status === 'ok') {
+            $('.follow').addClass('hidden')
+            $('.following').removeClass('hidden')
+          }
+        })
+        .catch((e) => {
+          window.alert('Error')
+          console.log(e)
+        })
+    })
+  })
+
+  $(function(){
+    $('.following').on('click', function() {
+      axios.post(`/accounts/${accountId}/unfollows`)
+        .then((response) => {
+          if (response.data.status === 'ok') {
+            $('.follow').removeClass('hidden')
+            $('.following').addClass('hidden')
+          }
+        })
+        .catch((e) => {
+          window.alert('Error')
+          console.log(e)
+        })
+    })
+  })
+
+})
