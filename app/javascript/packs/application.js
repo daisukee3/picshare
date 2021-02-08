@@ -138,6 +138,9 @@ document.addEventListener('DOMContentLoaded', () => {
           if (response.data.status === 'ok') {
             $('.follow').addClass('hidden')
             $('.following').removeClass('hidden')
+            const followerCount = $(`#follower_count`).text()
+            const numFollowerCount = parseInt(followerCount)
+            $(`#follower_count`).text(numFollowerCount + 1)
           }
         })
         .catch((e) => {
@@ -154,6 +157,9 @@ document.addEventListener('DOMContentLoaded', () => {
           if (response.data.status === 'ok') {
             $('.follow').removeClass('hidden')
             $('.following').addClass('hidden')
+            const followerCount = $(`#follower_count`).text()
+            const numFollowerCount = parseInt(followerCount)
+            $(`#follower_count`).text(numFollowerCount - 1)
           }
         })
         .catch((e) => {
