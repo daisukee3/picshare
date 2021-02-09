@@ -14,12 +14,14 @@
             フォロー中
           .profilePage_followbtn_follow.follow.hidden
             フォローする
-          .profilePage_follower_text
-            フォロー数:
+          = link_to account_followings_path(user) do
+            .profilePage_follower_text
+              フォロー数:
           .profilePage_following_count
             %p= user.followings.count
-          .profilePage_follower_text
-            フォロワー数:
+          = link_to  account_follows_path(user) do
+            .profilePage_follower_text
+              フォロワー数:
           .profilePage_follower_count#follower_count
             %p= user.followers.count
 
