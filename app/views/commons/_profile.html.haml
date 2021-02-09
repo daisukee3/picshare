@@ -9,10 +9,22 @@
       - if user == current_user
         -# = link_to 'Edit', edit_profile_path
       - else
-        - if current_user&.has_followed?(user)
-          = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'}
-        - else
-          = link_to 'Follow', account_follows_path(user), data: {method: 'post'}
+        .profilePage_followbtn
+          .profilePage_followbtn_following.following.hidden
+            フォロー中
+          .profilePage_followbtn_follow.follow.hidden
+            フォローする
+          = link_to account_followings_path(user) do
+            .profilePage_follower_text
+              フォロー数:
+          .profilePage_following_count
+            %p= user.followings.count
+          = link_to  account_follows_path(user) do
+            .profilePage_follower_text
+              フォロワー数:
+          .profilePage_follower_count#follower_count
+            %p= user.followers.count
+
 = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
   .circle-avatar
     %img#avatar_img_prev.hidden{:src => "#"}
