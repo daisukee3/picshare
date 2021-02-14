@@ -22,7 +22,6 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.save!
     render json: @comment, include: { user: [ :profile] }
-    
   end
 
   private

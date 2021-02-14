@@ -20,7 +20,8 @@
     .card_image
       - if article.images.attached?
         - article.images.each do |image|
-          = image_tag image
+          = link_to article_path(article) do
+            = image_tag image
   - if user_signed_in? 
     .card_option
       - if current_user.has_liked?(article)
